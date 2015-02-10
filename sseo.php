@@ -6,7 +6,7 @@
 	Description: Adds SEO features to Shopp. Requires Shopp and WordPress SEO.
 	Author: Maine Hosting Solutions
 	Author URI: http://mainehost.com/
-	Version: 1.0.0	
+	Version: 1.0.1	
 */
 
 if(!class_exists("shopp_seo_mhs")) {
@@ -115,7 +115,7 @@ if(!class_exists("shopp_seo_mhs")) {
 				if($stage == 'activate') $this->dep_error .= sprintf(SSEO_DEP_ERROR, SSEO_SHOPP_NAME);
 				else $this->dep_error .= sprintf(SSEO_DEP_DEACT_ERROR, SSEO_SHOPP_NAME);
 			}
-			if(!in_array(SSEO_WPSEO_PATH, apply_filters('active_plugins', get_option('active_plugins')))) {
+			if((!in_array(SSEO_WPSEO_PATH, apply_filters('active_plugins', get_option('active_plugins')))) && ((!in_array(SSEO_WPSEOP_PATH, apply_filters('active_plugins', get_option('active_plugins')))))) {
 				if($stage == 'activate') $this->dep_error .= sprintf(SSEO_DEP_ERROR, SSEO_WP_SEO_NAME);
 				else $this->dep_error .= sprintf(SSEO_DEP_DEACT_ERROR, SSEO_WP_SEO_NAME);
 			}
