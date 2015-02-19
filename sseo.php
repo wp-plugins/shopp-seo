@@ -6,7 +6,7 @@
 	Description: Adds SEO features to Shopp. Requires Shopp and WordPress SEO.
 	Author: Maine Hosting Solutions
 	Author URI: http://mainehost.com/
-	Version: 1.0.1	
+	Version: 1.0.2	
 */
 
 if(!class_exists("shopp_seo_mhs")) {

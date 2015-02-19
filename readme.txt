@@ -2,8 +2,8 @@
 Contributors: mainehost, godthor
 Tags: SEO, Shopp, WordPress SEO
 Requires at least: 3.9
-Tested up to: 4.1
-Stable tag: 1.0.1
+Tested up to: 4.1.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,9 @@ None yet.
 2. SEO fields for Shopp categories and products.
 
 == Changelog ==
+
+= 1.0.2 =
+* Verified compatability with WordPress 4.1.1
 
 = 1.0.1 =
 * Fixed an issue where the plugin would not activate if WordPress SEO Premium was installed instead of the free version. It should now activate for either version of WordPress SEO.
