@@ -295,7 +295,7 @@ if(!class_exists("shopp_seo_mhs")) {
 
 			echo '
 				<p>
-				<b>SEO Title:</b><br /><input type="text" name="' . ((!$tax) ? 'mhs_seo_title' : 'wpseo_title') . '" size="50" maxlength="70" value="' . $title . '" id="mhs_seo_title" class="mhs_seo_title" style="width: 100%;">
+				<b>SEO Title:</b><br /><input type="text" name="' . ((!$tax) ? 'mhs_seo_title' : 'wpseo_title') . '" size="50" value="' . $title . '" id="mhs_seo_title" class="mhs_seo_title" style="width: 100%;">
 				<div id="mhs_seo_title_area"></div>
 				</p>
 				<p>

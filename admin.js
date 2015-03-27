@@ -12,9 +12,9 @@ jQuery(document).ready(function($) {
 		var area = $(field).attr('id') + '_area';
 
 		if (len >= max) {
-			$('#'+area).html('<span style="color: red;">-' + char + ' characters left</span>');
+			$('#'+area).html('<span style="color: red;">' + len + ' characters</span>');
 		} else {
-			$('#'+area).html('<span style="color: green;">' + char + ' characters left</span>');
+			$('#'+area).html('<span style="color: green;">' + len + ' characters</span>');
 		}
 	}
 	function mhs_seo_desc_count(field) {
@@ -24,9 +24,9 @@ jQuery(document).ready(function($) {
 		var area = $(field).attr('id') + '_area';
 
 		if (len >= max) {
-			$('#'+area).html('<span style="color: red;">-' + char + ' characters left</span>');
+			$('#'+area).html('<span style="color: red;">' + len + ' characters</span>');
 		} else {
-			$('#'+area).html('<span style="color: green;">' + char + ' characters left</span>');
+			$('#'+area).html('<span style="color: green;">' + len + ' characters</span>');
 		}
 	}
 
