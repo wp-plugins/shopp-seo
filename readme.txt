@@ -3,7 +3,7 @@ Contributors: mainehost, godthor
 Tags: SEO, Shopp, WordPress SEO
 Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,11 @@ None yet.
 
 == Changelog ==
 
+= 1.0.4 =
+
+* **Tweak**
+	* The deactivation of Shopp SEO if WordPress SEO is deactivated has been removed and instead replaced with an admin notice. The problem was that when WordPress SEO was being upgraded it would in turn deactivate Shopp SEO. If you did not realize this then you may have had Shopp SEO deactivated for a while, maybe even now.
+	
 = 1.0.3 =
 
 * **Changes**
