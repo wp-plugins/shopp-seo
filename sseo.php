@@ -6,7 +6,7 @@
 	Description: Adds SEO features to Shopp. Requires Shopp and WordPress SEO.
 	Author: Maine Hosting Solutions
 	Author URI: http://mainehost.com/
-	Version: 1.0.4	
+	Version: 1.0.5	
 */
 
 if(!class_exists("shopp_seo_mhs")) {
@@ -68,28 +68,20 @@ if(!class_exists("shopp_seo_mhs")) {
 	     * Setup hooks, actions, filters, and whatever is needed for the plugin to run.
 	     */
 		function __construct() {
-			// require 'constants.php';
-
 			register_activation_hook( __FILE__, array($this,'activate'));
 
-			// add_action('plugins_loaded', array($this,'maybe_deactivate'));
 			add_action('plugins_loaded', array($this,'notice_check'));
 			add_action('admin_menu', array($this,'menu'));
 			add_action('admin_enqueue_scripts', array($this,'admin_scripts'));
 
-			DEFINE('SSEO_NAME','Shopp SEO');
-			DEFINE('SSEO_MENU_NAME','Shopp SEO');
-
-			DEFINE('SSEO_SHOPP_NAME','Shopp');
-			DEFINE('SSEO_WP_SEO_NAME','WordPress SEO by Yoast');
-
-			DEFINE('SSEO_SHOPP_PATH','shopp/Shopp.php');
-			DEFINE('SSEO_WPSEO_PATH','wordpress-seo/wp-seo.php');
-			DEFINE('SSEO_WPSEOP_PATH','wordpress-seo-premium/wp-seo-premium.php');
-
-			// DEFINE('SSEO_DEP_ERROR','<p>%s must be installed and active.</p>');
-			// DEFINE('SSEO_DEP_DEACT_ERROR','<div class="error"><p>' . SSEO_NAME . ' has been deactivated because %s was deactivated.</p></div>');
-			DEFINE('SSEO_DEP_ERROR','<div class="error"><p>%s is not installed or active. ' . SSEO_NAME . ' will not function until %s is installed and activated.</p></div>');			
+			define('SSEO_NAME','Shopp SEO');
+			define('SSEO_MENU_NAME','Shopp SEO');
+			define('SSEO_SHOPP_NAME','Shopp');
+			define('SSEO_WP_SEO_NAME','WordPress SEO by Yoast');
+			define('SSEO_SHOPP_PATH','shopp/Shopp.php');
+			define('SSEO_WPSEO_PATH','wordpress-seo/wp-seo.php');
+			define('SSEO_WPSEOP_PATH','wordpress-seo-premium/wp-seo-premium.php');
+			define('SSEO_DEP_ERROR','<div class="error"><p>%s is not installed or active. ' . SSEO_NAME . ' will not function until %s is installed and activated.</p></div>');			
 		}
 		/**
 		 * Run when this plugin is activated.
@@ -101,12 +93,9 @@ if(!class_exists("shopp_seo_mhs")) {
 		 * Used to check if dependencies are active when a plugin is deactivated.
 		 */
 		function notice_check() {
-			// $this->dependencies('deactivate');
 			$this->dependencies();
 
 			if($this->dep_error) {
-	            // require_once(ABSPATH . 'wp-admin/includes/plugin.php');
-	            // deactivate_plugins(plugin_basename( __FILE__ ));
 	            add_action('admin_notices', array($this,'deactivate_notice'));
 	        }
 	        else {
@@ -145,16 +134,11 @@ if(!class_exists("shopp_seo_mhs")) {
 		 * Checks to see that the dependencies are installed and active.
 		 * @param type $stage Whether it's currently activating or deactivating a plugin.
 		 */
-		// function dependencies($stage) {
 		function dependencies() {		
 			if(!in_array(SSEO_SHOPP_PATH, apply_filters('active_plugins', get_option('active_plugins')))) {
-				// if($stage == 'activate') $this->dep_error .= sprintf(SSEO_DEP_ERROR, SSEO_SHOPP_NAME);
-				// else $this->dep_error .= sprintf(SSEO_DEP_DEACT_ERROR, SSEO_SHOPP_NAME);
 				$this->dep_error .= sprintf(SSEO_DEP_ERROR, SSEO_SHOPP_NAME, SSEO_SHOPP_NAME);
 			}
 			if((!in_array(SSEO_WPSEO_PATH, apply_filters('active_plugins', get_option('active_plugins')))) && ((!in_array(SSEO_WPSEOP_PATH, apply_filters('active_plugins', get_option('active_plugins')))))) {
-				// if($stage == 'activate') $this->dep_error .= sprintf(SSEO_DEP_ERROR, SSEO_WP_SEO_NAME);
-				// else $this->dep_error .= sprintf(SSEO_DEP_DEACT_ERROR, SSEO_WP_SEO_NAME);
 				$this->dep_error .= sprintf(SSEO_DEP_ERROR, SSEO_WP_SEO_NAME, SSEO_WP_SEO_NAME);
 			}
 		}
@@ -162,7 +146,6 @@ if(!class_exists("shopp_seo_mhs")) {
 		 * Core function to check for dependencies.
 		 */
 		function check_dependencies() {
-			// $this->dependencies('activate');
 			$this->dependencies();
 
 			if($this->dep_error) $this->br_trigger_error($this->dep_error, E_USER_ERROR);

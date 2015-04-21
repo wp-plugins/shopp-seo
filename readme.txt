@@ -2,8 +2,8 @@
 Contributors: mainehost, godthor
 Tags: SEO, Shopp, WordPress SEO
 Requires at least: 3.9
-Tested up to: 4.1
-Stable tag: 1.0.4
+Tested up to: 4.1.2
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,9 +43,17 @@ None yet.
 
 == Changelog ==
 
+= 1.0.5 =
+
+* **Updated**
+	* Changed the default title length to 59 characters and description length to 156 to match with WordPress SEO's recommendations.
+
+* **Removed**
+	* Cleaned out deprecated code.
+
 = 1.0.4 =
 
-* **Tweak**
+* **Updated**
 	* The deactivation of Shopp SEO if WordPress SEO is deactivated has been removed and instead replaced with an admin notice. The problem was that when WordPress SEO was being upgraded it would in turn deactivate Shopp SEO. If you did not realize this then you may have had Shopp SEO deactivated for a while, maybe even now.
 	
 = 1.0.3 =
