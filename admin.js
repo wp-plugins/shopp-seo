@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
 		mhs_seo_desc_count($(this));
 	});
 	function mhs_seo_title_count(field) {
-		var max = 70;
+		var max = 59;
 		var len = $(field).val().length;
 		var char = max - len;
 		var area = $(field).attr('id') + '_area';
@@ -18,7 +18,7 @@ jQuery(document).ready(function($) {
 		}
 	}
 	function mhs_seo_desc_count(field) {
-		var max = 160;
+		var max = 156;
 		var len = $(field).val().length;
 		var char = max - len;
 		var area = $(field).attr('id') + '_area';
