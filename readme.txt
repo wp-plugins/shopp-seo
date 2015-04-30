@@ -2,8 +2,8 @@
 Contributors: mainehost, godthor
 Tags: SEO, Shopp, WordPress SEO
 Requires at least: 3.9
-Tested up to: 4.2
-Stable tag: 1.0.5
+Tested up to: 4.2.1
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,7 +43,23 @@ None yet.
 
 == Changelog ==
 
+= 1.0.6 =
+
+Released: April 21st, 2015
+
+* **Added**
+	* Link for rate & review, as well as Shopp SEO settings, appears on the plugins page.
+
+* **Updated**
+	* Removed the field maxlength from the title field on the settings page.
+	* Adjusted the settings page to be more compact.
+
+* **Bug Fix**
+	* The length checks on the meta fields will now only show red when you exceed the recommended length. Previously it would show red when at the recommended length.
+
 = 1.0.5 =
+
+Released: April 21st, 2015
 
 * **Updated**
 	* Changed the default title length to 59 characters and description length to 156 to match with WordPress SEO's recommendations.
@@ -53,10 +69,14 @@ None yet.
 
 = 1.0.4 =
 
+Released: March 31st, 2015
+
 * **Updated**
 	* The deactivation of Shopp SEO if WordPress SEO is deactivated has been removed and instead replaced with an admin notice. The problem was that when WordPress SEO was being upgraded it would in turn deactivate Shopp SEO. If you did not realize this then you may have had Shopp SEO deactivated for a while, maybe even now.
 	
 = 1.0.3 =
+
+Released: March 27th, 2015
 
 * **Changes**
 
@@ -65,14 +85,20 @@ None yet.
 
 = 1.0.2 =
 
+Released: March 27th, 2015
+
 * Verified compatability with WordPress 4.1.1
 
 = 1.0.1 =
+
+Released: February 10th, 2015
 
 * **Bug Fixes**
 
 	* Fixed an issue where the plugin would not activate if WordPress SEO Premium was installed instead of the free version. It should now activate for either version of WordPress SEO.
 
 = 1.0.0 =
+
+Released: February 5th, 2015
 
 * Initial release of the plugin.
