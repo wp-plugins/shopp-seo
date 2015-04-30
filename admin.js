@@ -11,7 +11,7 @@ jQuery(document).ready(function($) {
 		var char = max - len;
 		var area = $(field).attr('id') + '_area';
 
-		if (len >= max) {
+		if (len > max) {
 			$('#'+area).html('<span style="color: red;">' + len + ' characters</span>');
 		} else {
 			$('#'+area).html('<span style="color: green;">' + len + ' characters</span>');
@@ -23,7 +23,7 @@ jQuery(document).ready(function($) {
 		var char = max - len;
 		var area = $(field).attr('id') + '_area';
 
-		if (len >= max) {
+		if (len > max) {
 			$('#'+area).html('<span style="color: red;">' + len + ' characters</span>');
 		} else {
 			$('#'+area).html('<span style="color: green;">' + len + ' characters</span>');

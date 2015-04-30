@@ -6,7 +6,7 @@
 	Description: Adds SEO features to Shopp. Requires Shopp and WordPress SEO.
 	Author: Maine Hosting Solutions
 	Author URI: http://mainehost.com/
-	Version: 1.0.5	
+	Version: 1.0.6	
 */
 
 if(!class_exists("shopp_seo_mhs")) {
@@ -74,6 +74,8 @@ if(!class_exists("shopp_seo_mhs")) {
 			add_action('admin_menu', array($this,'menu'));
 			add_action('admin_enqueue_scripts', array($this,'admin_scripts'));
 
+			add_filter('plugin_action_links_' . plugin_basename(__FILE__), array($this,'add_action_link'));
+
 			define('SSEO_NAME','Shopp SEO');
 			define('SSEO_MENU_NAME','Shopp SEO');
 			define('SSEO_SHOPP_NAME','Shopp');
@@ -88,7 +90,22 @@ if(!class_exists("shopp_seo_mhs")) {
 		 */
 		function activate() {
 			$this->check_dependencies();
-		}		
+		}	
+		/**
+		 * Adds the extra links on the plugins page.
+		 * @param array $links - The exsting default links.
+		 * @return array - Merge in my link array to the existing and return that.
+		 */
+		function add_action_link($links) {
+			$path = admin_url();
+
+			$mylinks = array(
+				'<a href="https://wordpress.org/support/view/plugin-reviews/shopp-seo" target="_blank">Rate and Review</a>',
+				'<a href="' . $path . 'options-general.php?page=shopp-seo">Settings</a>'
+			);
+
+			return array_merge($mylinks, $links);
+		}
 		/**
 		 * Used to check if dependencies are active when a plugin is deactivated.
 		 */
@@ -304,7 +321,7 @@ if(!class_exists("shopp_seo_mhs")) {
 				</p>
 				<p>
 				<b>SEO Description:</b><br />
-				<textarea name="' . ((!$tax) ? 'mhs_seo_desc' : 'wpseo_desc') . '" rows="5" cols="50" id="mhs_seo_desc"  style="width: 100%;" class="mhs_seo_desc" wrap>' . $desc . '</textarea>
+				<textarea name="' . ((!$tax) ? 'mhs_seo_desc' : 'wpseo_desc') . '" rows="5" cols="50" id="mhs_seo_desc" style="width: 100%;" class="mhs_seo_desc" wrap>' . $desc . '</textarea>
 				<div id="mhs_seo_desc_area"></div>';
 		}
 		/**
