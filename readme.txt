@@ -45,7 +45,7 @@ None yet.
 
 = 1.0.6 =
 
-Released: April 21st, 2015
+Released: April 30th, 2015
 
 * **Added**
 	* Link for rate & review, as well as Shopp SEO settings, appears on the plugins page.
