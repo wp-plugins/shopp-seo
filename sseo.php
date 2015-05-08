@@ -83,7 +83,10 @@ if(!class_exists("shopp_seo_mhs")) {
 			define('SSEO_SHOPP_PATH','shopp/Shopp.php');
 			define('SSEO_WPSEO_PATH','wordpress-seo/wp-seo.php');
 			define('SSEO_WPSEOP_PATH','wordpress-seo-premium/wp-seo-premium.php');
-			define('SSEO_DEP_ERROR','<div class="error"><p>%s is not installed or active. ' . SSEO_NAME . ' will not function until %s is installed and activated.</p></div>');			
+			define('SSEO_DEP_ERROR','<div class="error"><p>%s is not installed or active. ' . SSEO_NAME . ' will not function until %s is installed and activated.</p></div>');
+			define('SSEO_TITLE_P', 30);
+			define('SSEO_DESC_P', 30);
+			define('SSEO_ROBOTS_P', 40);
 		}
 		/**
 		 * Run when this plugin is activated.
@@ -116,12 +119,16 @@ if(!class_exists("shopp_seo_mhs")) {
 	            add_action('admin_notices', array($this,'deactivate_notice'));
 	        }
 	        else {
+				$title_p = (get_option('ssmhs_title_priority') >= 0) ? get_option('ssmhs_title_priority') : SSEO_TITLE_P;
+				$desc_p = (get_option('ssmhs_desc_priority') >= 0) ? get_option('ssmhs_desc_priority') : SSEO_DESC_P;
+				$robots_p = (get_option('ssmhs_robots_priority') >= 0) ? get_option('ssmhs_robots_priority') : SSEO_ROBOTS_P;
+
 				add_action('admin_init', array($this,'metabox'));
 				add_action('shopp_product_saved', array($this,'save_fields'));
-				add_action('wpseo_head', array($this,'the_robots'), 40);
+				add_action('wpseo_head', array($this,'the_robots'), $robots_p);
 
-				add_filter('wpseo_title', array($this,'the_title'), 30);
-				add_filter('wpseo_metadesc', array($this,'the_description'), 30);			
+				add_filter('wpseo_title', array($this,'the_title'), $title_p);
+				add_filter('wpseo_metadesc', array($this,'the_description'), $desc_p);			
 				add_filter('shopp_meta_description', array($this,'remove_shopp_desc'));				
 	        }
 		}		
@@ -235,7 +242,6 @@ if(!class_exists("shopp_seo_mhs")) {
 			# Shopp uses paged and Yoast does not replace %%pagenumber%% with paged.
 			$page = get_query_var('paged');
 			return str_replace('%%pagenumber%%', $page, $content);
-
 		}
 	    /**
 	     * Filter function for wpseo_title. Replaces title text with the title defined by this plugin
